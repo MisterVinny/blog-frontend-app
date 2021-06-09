@@ -1,8 +1,14 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/"> Home </router-link> |
+      <router-link to="/about"> About </router-link> |
+      <router-link to="/sample"> Sample </router-link> |
+      <router-link to="/signup"> Signup </router-link> |
+      <router-link to="/login"> Login </router-link> |
+      <router-link to="/logout"> Logout </router-link> |
+      <router-link to="/posts"> Posts </router-link> |
+      <router-link to="/posts/new"> New Post </router-link>
     </div>
     <router-view />
   </div>
@@ -22,11 +28,15 @@
 }
 
 #nav a {
+  font-size: 1.5em;
   font-weight: bold;
+  letter-spacing: 0.2rem;
   color: #2c3e50;
 }
 
 #nav a.router-link-exact-active {
+  font-size: 2em;
+
   color: #42b983;
 }
 </style>
