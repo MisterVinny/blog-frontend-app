@@ -2,9 +2,11 @@
   <div class="posts-index">
     <div v-for="post in posts" v-bind:key="post.id">
       <h2>{{ post.title }}</h2>
-      <img :src="post.image" alt="" />
-      <p>Title: {{ post.title }}</p>
-      <p>Body: {{ post.body }}</p>
+      <router-link :to="`/posts/${post.id}`">
+        <img :src="post.image" alt="" />
+      </router-link>
+      <p>{{ post.body }}</p>
+      <!-- <router-link to="/posts/1"></router-link> behaves like an a tag but has no page refresh that the a tag suffers from. Interpreted into a custom a-tag under the hood. Wrap around the thing you want to click on.-->
     </div>
   </div>
 </template>

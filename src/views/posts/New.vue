@@ -3,7 +3,7 @@
     <form v-on:submit.prevent="createPost()">
       <h1>New Post</h1>
       <ul>
-        <li class="text-errors" v-for="error in errors" v-bind:key="error">
+        <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
         </li>
       </ul>

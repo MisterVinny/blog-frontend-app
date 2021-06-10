@@ -26,14 +26,14 @@
 }
 
 #nav a {
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: bold;
   letter-spacing: 0.2rem;
   color: #2c3e50;
 }
 
 #nav a.router-link-exact-active {
-  font-size: 2em;
+  font-size: 1.5em;
 
   color: #42b983;
 }
