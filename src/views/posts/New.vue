@@ -7,7 +7,7 @@
           {{ error }}
         </li>
       </ul>
-
+      <img v-if="status" :src="`https://http.cat/${status}`" alt="" />
       <div class="form-group">
         <label>Title: </label>
         <input type="text" class="form-control" v-model="newPostParams.title" />
@@ -15,7 +15,25 @@
 
       <div class="form-group">
         <label>Body: </label>
-        <input type="text" class="form-control" v-model="newPostParams.body" />
+        <input
+          v-if="
+            newPostParams.body.length <= 20 && newPostParams.body.length >= 5
+          "
+          type="text"
+          class="form-control"
+          v-model="newPostParams.body"
+        />
+        <input
+          v-else
+          type="text"
+          class="danger-box"
+          v-model="newPostParams.body"
+        />
+        <br />
+        <small v-if="newPostParams.body.length < 5">
+          Body must be greater than 5 characters.</small
+        >
+        <small>{{ 20 - newPostParams.body.length }} characters remaining</small>
       </div>
 
       <div class="form-group">
@@ -28,16 +46,22 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.danger-box {
+  background-color: red;
+}
+</style>
 
 <script>
 import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "NewPost",
-      newPostParams: {},
+      newPostParams: {
+        body: "",
+      },
       errors: [],
+      status: "",
     };
   },
 
@@ -54,6 +78,7 @@ export default {
         .catch((error) => {
           this.errors = error.response.data.errors;
           console.log(error.response.data.message);
+          this.status = error.response.status;
         });
     },
   },
